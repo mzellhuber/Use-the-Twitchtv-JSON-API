@@ -1,0 +1,94 @@
+.card
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
+  margin-bottom: 30px
+  margin-top: 30px
+  border-radius: 6px
+  color: #333
+  background: #fff
+  width: 100%
+  border: 0
+
+  .input-group-btn > .btn
+    border: 0
+
+.card
+  position: relative
+  display: flex
+  -ms-flex-direction: column
+  flex-direction: column
+  min-width: 0
+  word-wrap: break-word
+  background-color: #fff
+  background-clip: border-box
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+
+.card-deck
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+
+.card, .navbar-nav
+  display: -webkit-box
+  display: -ms-flexbox
+	
+.card
+  [class*=card-header-]:not(.card-header-icon):not(.card-header-text):not(.card-header-image)
+    border-radius: 3px
+    margin-top: -20px
+    padding: 15px
+  .card-header-primary
+    .card-icon, .card-text, &:not(.card-header-icon):not(.card-header-text)
+      -webkit-box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 143, 143, 0.4)
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 143, 143, 0.4)
+    .card-icon, .card-text, &:not(.card-header-icon):not(.card-header-text)
+      background: linear-gradient(60deg, #5cb85c, #369836)
+  &.bg-primary
+    background: linear-gradient(60deg, #5cb85c, #369836)
+  &.card-rotate.bg-primary
+    .back, .front
+      background: linear-gradient(60deg, #5cb85c, #369836)
+  [class*=card-header-]
+    margin: 0 15px
+    padding: 0
+    position: relative
+  .card-header
+    z-index: 3 !important
+    border-bottom: none
+    background: 0 0
+    .title
+      color: #fff
+  [class*=card-header-], &[class*=bg-]
+    color: #fff
+    .card-title
+      color: #fff
+      a
+        color: #fff
+    .icon i
+      color: #fff
+
+.card-header
+  &:first-child
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+  border-bottom: 1px solid #eee
+  margin-bottom: 0
+
+.card-subtitle, .card-text:last-child
+  margin-bottom: 0
+
+.card-footer, .card-header
+  padding: .75rem 1.25rem
+  background-color: #fff
+
+.card .card-body
+  padding: .9375rem 20px
+  position: relative
+
+.card-body
+  -webkit-box-flex: 1
+  -ms-flex: 1 1 auto
+  flex: 1 1 auto
+  padding: 1.25rem
+	
+.red-card
+  background: linear-gradient(60deg, #D9534F, #BE2F2B) !important

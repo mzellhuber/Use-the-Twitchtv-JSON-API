@@ -1,0 +1,97 @@
+let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+
+class MyApp extends React.Component {
+	constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+	
+	componentDidMount(){
+		let results = [];
+		for(var i in channels){
+			let chan = channels[i]
+			fetch("https://wind-bow.glitch.me/twitch-api/streams/"+channels[i])
+        .then(response => response.json())
+        .then(data => {
+      					results.push({ stream: data.stream, links: data._links, channel:chan})
+                this.setState({data: results, dataAll:results})
+              }
+             );
+		}
+		
+	}
+	
+	getAll(){
+		this.setState({data: this.state.dataAll})
+	}
+	
+	getOnline(){
+		let streams = this.state.dataAll
+		streams = streams.filter(my_stream => my_stream.stream != null)
+		this.setState({data:streams})
+	}
+	
+	getOffline(){
+		let streams = this.state.dataAll
+		streams = streams.filter(my_stream => my_stream.stream == null)
+		this.setState({data:streams})
+	}
+	
+  render() {
+    return (
+      <div className="">
+				<h1>Twitch Streamers</h1>
+				<button className="btn btn-default" onClick={this.getAll.bind(this)} >All</button>
+				<button className="btn btn-success" onClick={this.getOnline.bind(this)}>Online</button>
+				<button className="btn btn-danger" onClick={this.getOffline.bind(this)}>Offline</button>
+				{this.state.data.map(function(object, i){
+            return <Stream obj={object} hasStream={object.stream!=null}/>;
+          })}
+      </div>
+    );
+  }
+}
+
+
+
+
+class Stream extends React.Component{
+	render() {
+    return (
+			<div className="card">
+				<div className = {`card-header card-header-primary ${this.props.hasStream ? "" : "red-card"}`}>
+					<h3 className="card-title">{this.props.obj.channel} stream status: {this.props.hasStream ? 'online' : 'offline'}</h3>
+				</div>
+				<div className="card-body">
+					<div className="row">
+						<div className="col-md-12">
+							<a href={this.props.obj.links.channel} target="_blank"><h4 className="card-title">Go to channel</h4></a>
+							{this.props.hasStream ? <StreamStatus obj={this.props.obj}/>:''}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+    );
+  }
+}
+
+class StreamStatus extends React.Component{
+	render() {
+    return (
+		<div>
+				<p>{this.props.obj.stream.game} {this.props.obj.stream.channel.status}</p>
+
+		</div>
+		
+		);
+  }
+}
+// ========================================
+
+ReactDOM.render(
+  <MyApp />,
+  document.getElementById('container')
+);
