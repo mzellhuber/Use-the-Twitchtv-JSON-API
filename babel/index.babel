@@ -17,6 +17,7 @@ class MyApp extends React.Component {
         .then(data => {
       					results.push({ stream: data.stream, links: data._links, channel:chan})
                 this.setState({data: results, dataAll:results})
+								console.log(results)
               }
              );
 		}
@@ -67,7 +68,7 @@ class Stream extends React.Component{
 				<div className="card-body">
 					<div className="row">
 						<div className="col-md-12">
-							<a href={this.props.obj.links.channel} target="_blank"><h4 className="card-title">Go to channel</h4></a>
+							<a href={`https://www.twitch.tv/${this.props.obj.channel}`} target="_blank"><h4 className="card-title">Go to channel</h4></a>
 							{this.props.hasStream ? <StreamStatus obj={this.props.obj}/>:''}
 							
 						</div>

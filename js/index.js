@@ -36,6 +36,7 @@ var MyApp = function (_React$Component) {
 				}).then(function (data) {
 					results.push({ stream: data.stream, links: data._links, channel: chan });
 					_this2.setState({ data: results, dataAll: results });
+					console.log(results);
 				});
 			};
 
@@ -139,7 +140,7 @@ var Stream = function (_React$Component2) {
 							{ className: "col-md-12" },
 							React.createElement(
 								"a",
-								{ href: this.props.obj.links.channel, target: "_blank" },
+								{ href: "https://www.twitch.tv/" + this.props.obj.channel, target: "_blank" },
 								React.createElement(
 									"h4",
 									{ className: "card-title" },
